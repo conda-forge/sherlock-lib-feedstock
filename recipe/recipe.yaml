@@ -19,10 +19,11 @@ build:
 
 requirements:
   host:
-    - python >3.7
+    - python ${{ python_min }}.*
     - pip
+    - setuptools
   run:
-    - python >3.7
+    - python >=${{ python_min }}
     - certifi ==2019.6.16
     - pysocks ==1.7.0
     - requests ==2.22.0
@@ -35,8 +36,10 @@ tests:
       imports:
         - sherlock_lib
       pip_check: true
+      python_version:
+        - ${{ python_min }}
+        - "*"
 
-      python_version: ${{ python_min }}.*
 about:
   summary: 🔎 Hunt down social media accounts by username across social networks
   license: MIT
